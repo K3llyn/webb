@@ -1,31 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Emilys+Candy&display=swap');
 
-:root{
-    --cor-fundo: purple ;
-    --cor-principal: #0B0D20 ;
-    --cor-secundaria: green; 
-    --cor-destaque: orange;
-    --cor-texto: #D7F9FF;
-
+:root {
+    --cor-fundo: #fc4582;
+    --cor-principal: #81a0d4;
+    --cor-secundaria: #77cfb7;
+    --cor-destaque: #42e074;
+    --cor-texto: #edf6fa;
 }
 
 body {
     background-color: var(--cor-fundo);
     color: var(--cor-texto);
+    font-family: "Emilys Candy", serif;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    margin: 0; /* Remove margens padrão do body */
+    position: relative; /* Necessário para o posicionamento absoluto dos filhos */
 }
 
-.caixa-principal{
+.caixa-principal {
     background-color: var(--cor-principal);
     width: 90%;
     max-width: 600px;
     text-align: center;
     padding: 20px;
+    border-radius: 13px;
+    position: relative; /* Necessário para o posicionamento absoluto dos filhos */
 }
 
-h1{
+h1, .caixa-principal, .caixa-resultado {
+    font-family: "Emilys Candy", serif;
+    border-radius: 20px;
+}
+
+h1 {
     color: var(--cor-destaque);
 }
 
@@ -38,7 +48,51 @@ button {
     transition: background-color 0.3s;
 }
 
-button:hover{
+button:hover {
     background-color: var(--cor-destaque);
     color: var(--cor-principal);
+}
+
+.caixa-resultado {
+    display: none;
+}
+
+.caixa-resultado.mostrar {
+    display: block;
+}
+
+.caixa-alternativas {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 13px;
+}
+
+.container {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 20px;
+    position: relative; /* Necessário para o posicionamento absoluto dos filhos */
+}
+
+.rocambole {
+    position: absolute;
+    bottom: -50px; /* Ajuste este valor para posicionar a imagem mais abaixo */
+    left: -180px; /* Ajuste conforme necessário para sair da caixa-perguntas */
+}
+
+.rocambole img {
+    display: block;
+}
+
+.caixa-perguntas {
+    position: relative; /* Garante que a imagem esteja fora do fluxo normal da caixa de perguntas */
+    margin-left: 0px; /* Ajuste conforme necessário para garantir que a caixa de perguntas não sobreponha a imagem */
+    text-align: justify; /* Justifica o texto */
+    padding-bottom: 20px; /* Adiciona espaço na parte inferior para evitar que o texto fique muito próximo da imagem */
+}
+
+.caixa-perguntas::after {
+    content: ""; /* Garante que o texto seja justificado até a borda */
+    display: block;
 }
